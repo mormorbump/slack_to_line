@@ -6,7 +6,7 @@ LINE_NOTIFY_ACCESS_TOKEN = os.environ["LINE_NOTIFY_ACCESS_TOKEN"]
 
 # チャンネル内の全てのメッセージに応答。これをフックとしてmention_funcが走り、line_botへリクエストを送る。
 @listen_to('(.*)')
-def listen_func(message):
+def listen_func(message, something):
     # これでslackのユーザ名を取得可能。
     # name = "[" + message.channel._client.users[message._body['user']]['real_name'] + "@ slack]\n"
     # curlだったらこれ
@@ -20,5 +20,6 @@ def listen_func(message):
     r = requests.post(url, headers=headers, files=dict(payload))
 
 @respond_to('(.*)')
-def mention_func(message):
+def mention_func(message, something):
     message.reply('お前口臭くね？')
+    message.reply(message, something)
