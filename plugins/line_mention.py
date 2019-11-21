@@ -28,4 +28,3 @@ def listen_func(message, something):
 @respond_to('(.*)')
 def mention_func(message, something):
     message.reply('お前口臭くね？')
-    message.reply(message.channel, something)
