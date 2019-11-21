@@ -21,11 +21,11 @@ def listen_func(message, something):
         }
     # payload = 'message=%s' % (message.body['text'])
     files = {
-        'message': (None, message.body['text'])
+        'message': (None,  "=================\n"+ message.body['text'])
     }
     r = requests.post(url, headers=headers, files=files)
 
 @respond_to('(.*)')
 def mention_func(message, something):
     message.reply('お前口臭くね？')
-    message.reply(message, something)
+    message.reply(message.channel, something)
