@@ -14,5 +14,5 @@ def mention_func(message, something):
     # -F "<key-value data>" データの指定(pythonの文字列処理っぽい) \'message={0}{1}\'".format(name,message.body['text'])
     # "curl -X POST https://notify-api.line.me/api/notify -H \'Authorization: Bearer ${LINE_NOTIFY_ACCESS_TOKEN}\' -F \'message={0}{1}\'".format(name,message.body['text'])
     headers = {"Authorization: Bearer %s" % LINE_NOTIFY_ACCESS_TOKEN}
-    payload = 'message=%s %s' % (name, message.body['text']))
+    payload = 'message=%s %s' % (name, message.body['text'])
     r = requests.post(url, data=payload, headers=headers)

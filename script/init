@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+set -e
+git add -A
+git commit -m "changed source"
+git push heroku master
