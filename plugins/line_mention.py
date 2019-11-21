@@ -16,8 +16,11 @@ def listen_func(message, something):
     # "curl -X POST https://notify-api.line.me/api/notify -H 'Authorization: Bearer ${LINE_NOTIFY_ACCESS_TOKEN}' -F 'message={0}{1}\'".format(name,message.body['text'])
     url = "https://notify-api.line.me/api/notify"
     headers = {"Authorization: Bearer %s" % LINE_NOTIFY_ACCESS_TOKEN}
-    payload = 'message=%s' % (message.body['text'])
-    r = requests.post(url, headers=headers, files=dict(payload))
+    # payload = 'message=%s' % (message.body['text'])
+    payload = {
+        'message': (name, message.body['text'], "multipart/form-data")
+    }
+    r = requests.post(url, headers=headers, files=payload)
 
 @respond_to('(.*)')
 def mention_func(message, something):
