@@ -8,7 +8,7 @@ LINE_NOTIFY_ACCESS_TOKEN = os.environ["LINE_NOTIFY_ACCESS_TOKEN"]
 @listen_to('(.*)')
 def listen_func(message, something):
     # これでslackのユーザ名を取得可能。
-    # name = "[" + message.channel._client.users[message._body['user']]['real_name'] + "@ slack]\n"
+    name = "[" + message.channel._client.users[message._body['user']]['real_name'] + "@ slack]\n"
     # curlだったらこれ
     # -X httpメソッドの指定（今回はPOST）
     # -H "<header info>" ヘッダー情報の付与　\'Authorization: Bearer ${LINE_NOTIFY_ACCESS_TOKEN}\'
