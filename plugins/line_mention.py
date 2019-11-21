@@ -1,5 +1,6 @@
 from slackbot.bot import respond_to, listen_to, default_reply
 import os
+import requests
 
 LINE_NOTIFY_ACCESS_TOKEN = os.environ["LINE_NOTIFY_ACCESS_TOKEN"]
 
@@ -15,4 +16,4 @@ def mention_func(message, something):
     # "curl -X POST https://notify-api.line.me/api/notify -H \'Authorization: Bearer ${LINE_NOTIFY_ACCESS_TOKEN}\' -F \'message={0}{1}\'".format(name,message.body['text'])
     headers = {"Authorization: Bearer %s" % LINE_NOTIFY_ACCESS_TOKEN}
     payload = 'message=%s %s' % (name, message.body['text'])
-    r = requests.post(url, data=payload, headers=headers)
+    r = requests.post(url, json=payload, headers=headers)
